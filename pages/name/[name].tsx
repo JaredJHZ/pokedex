@@ -65,19 +65,25 @@ const PokemonByNamePage: NextPage<Props> = ({pokemon}) => {
                 <Grid xs={12} sm={8}>
                     <Card>
                         <Card.Header css={{display:'flex', justifyContent:'space-between'}}>
-                            <Text h1 transform="capitalize">
-                                {pokemon.name}
-                            </Text>
-                            <Button
-                            color="gradient"
-                            ghost={!isInFavorites}
-                            onClick={() => {
-                                onToggleFavorite();
-                                setIsInFavorites(!isInFavorites)
-                            }}
-                            >
-                                {isInFavorites ? 'En favoritos' : 'Guardar en favoritos'}
-                            </Button>
+                            <Grid.Container gap={2}>
+                                <Grid xs={12} md={6}  css={{display:'flex', alignItems:'center' , justifyContent:'center'}}>
+                                <Text h1 transform="capitalize">
+                                    {pokemon.name}
+                                </Text>
+                                </Grid>
+                                <Grid xs={12} md={6} css={{display:'flex', alignItems:'center', justifyContent:'center'}}>
+                                <Button
+                                    color="gradient"
+                                    ghost={!isInFavorites}
+                                    onClick={() => {
+                                        onToggleFavorite();
+                                        setIsInFavorites(!isInFavorites)
+                                    }}
+                                    >
+                                        {isInFavorites ? 'En favoritos' : 'Guardar en favoritos'}
+                                    </Button>
+                                </Grid>
+                            </Grid.Container>
                         </Card.Header>
 
                         <Card.Body>

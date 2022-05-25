@@ -1,5 +1,4 @@
 import { Link, Spacer, Text, useTheme } from "@nextui-org/react"
-import Image from "next/image";
 import NextLink from "next/link";
 
 export const Navbar = () => {
@@ -16,13 +15,6 @@ export const Navbar = () => {
             padding:'0x 20px',
             backgroundColor: theme?.colors.gray50.value
         }}>
-
-            <Image
-            alt="icono de la app"
-            width={70}
-            height={70}
-            src="
-            https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/132.png" />
 
             <NextLink href={"/"} passHref>
                 <Link>
