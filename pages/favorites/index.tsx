@@ -1,10 +1,29 @@
+import { Card, Container, Grid, Image, Text } from "@nextui-org/react"
+import { useEffect, useState } from "react"
 import { Layout } from "../../components/layouts"
+import { FavoritePokemons } from "../../components/pokemon"
+import { NoFavorites } from "../../components/ui"
+import { localFavotires } from "../../utils "
+
+
 
 const FavoritesPage = () => {
+
+    const [favoritePokemons, setFavoritePokemons] = useState<number[]>([]);
+
+    useEffect(()=>{
+        setFavoritePokemons(localFavotires.pokemons())
+
+    },[])
+
     return (
         <Layout title="favorites">
-            <h1>XD</h1>
-        </Layout>
+            {
+                favoritePokemons.length === 0
+                ? <NoFavorites />
+                : <FavoritePokemons pokemons={favoritePokemons} />
+            }
+        </Layout>   
     )
 }
 
