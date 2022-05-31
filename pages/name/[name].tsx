@@ -36,7 +36,7 @@ const PokemonByNamePage: NextPage<Props> = ({pokemon}) => {
                     y:0
                 }
         })?.then(
-            ()=>console.log("XD")
+            () => ''
         )
         }
 
@@ -136,17 +136,32 @@ export const getStaticPaths: GetStaticPaths = async(ctx) => {
         paths: pokemon151.map((name) => ({
             params: {name}
         })),
-        fallback:false
+        fallback:'blocking'
     }
 }
 
 export const getStaticProps : GetStaticProps = async({params}) => {
 
+    
+
     const {name} = params as {name:string;};
+
+    const pokemon = await getPokemonInfo(name);
+    
+    if (pokemon === null) {
+        return {
+            redirect:{
+                destination:'/',
+                permanent: false
+            }
+        }
+    }
+
+
 
     return {
         props: {
-           pokemon: await getPokemonInfo(name)
+           pokemon
         }
     }
 }

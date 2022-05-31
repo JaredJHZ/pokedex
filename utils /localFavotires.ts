@@ -1,5 +1,4 @@
 const toggleFavorite = (id: number) => {
-    console.log("Togglefavorite call");
 
     let favorites: number[] = JSON.parse(localStorage.getItem("favorites") || '[]');
 
